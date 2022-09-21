@@ -11,4 +11,10 @@ class UserController extends Controller
     {
         return $id;
     }
+
+    function viewLoad()
+    {
+        $data = ['adil', 'rehman', 'raheem', 'raheel'];
+        return view('user', ['users' => $data]);
+    }
 }

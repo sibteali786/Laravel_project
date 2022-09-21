@@ -24,3 +24,4 @@ Route::get('/', function () {
 Route::view("contact", '/contact');
 Route::get('about', [AboutController::class, 'checkIfRoute']);
 Route::get('user/{id}', [UserController::class, 'show']);
+Route::get('user', [UserController::class, 'viewLoad']);
