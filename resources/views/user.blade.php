@@ -2,7 +2,7 @@
 <h2>Custom File</h2> --}}
 
 
-
+@include('header')
 @for ($i = 0; $i < 10; $i++)
     <p>{{ $i }}</p>
 @endfor
@@ -20,3 +20,10 @@
         <h2>Chal bhai shat ho</h2>
     @endif
 @endforeach
+
+@include('innerview')
+
+<script>
+    var data = @json($users);
+    console.log(data);
+</script>
