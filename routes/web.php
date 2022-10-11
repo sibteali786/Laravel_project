@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,25 @@ Route::get('/', function () {
 });
 
 Route::view("contact", '/contact');
+Route::post("user", [UserAuth::class, 'userLogin']);
+// Route::view("login", "login");
+Route::view('profile', 'profile');
+Route::get('/login', function () {
+    if (session()->has('user')) {
+        redirect('profile');
+    }
+    return redirect('login');
+});
+Route::get('/logout', function () {
+    if (session()->has('user')) {
+        session()->pull('user');
+    }
+    return redirect('login');
+});
+
+
+
 Route::get('about', [AboutController::class, 'checkIfRoute']);
 Route::get('user/{id}', [UserController::class, 'show']);
-Route::get('user', [UserController::class, 'viewLoad']);
+Route::get('user', [UserController::class, 'index']);
+Route::get('account', [AccountController::class, 'getData']);
