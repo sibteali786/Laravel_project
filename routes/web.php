@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AddMember;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Log;
@@ -40,7 +41,9 @@ Route::get('/logout', function () {
     return redirect('login');
 });
 
-
+// Flash session example 
+Route::view('add', 'add');
+Route::post('addmember', [AddMember::class, 'add']);
 
 Route::get('about', [AboutController::class, 'checkIfRoute']);
 Route::get('user/{id}', [UserController::class, 'show']);
