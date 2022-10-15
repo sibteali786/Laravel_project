@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddMember;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Log;
@@ -49,3 +50,8 @@ Route::get('about', [AboutController::class, 'checkIfRoute']);
 Route::get('user/{id}', [UserController::class, 'show']);
 Route::get('user', [UserController::class, 'index']);
 Route::get('account', [AccountController::class, 'getData']);
+
+
+// File upload 
+Route::view('upload', 'upload');
+Route::post('upload', [UploadController::class, 'uploadFile']);
