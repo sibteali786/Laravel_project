@@ -6,6 +6,8 @@ use App\Http\Controllers\AddMember;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserListController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +57,15 @@ Route::get('account', [AccountController::class, 'getData']);
 // File upload 
 Route::view('upload', 'upload');
 Route::post('upload', [UploadController::class, 'uploadFile']);
+
+
+// localization 
+// Route::view('localization', 'localization');
+Route::get('/localization/{lang}', function ($lang) {
+    App::setlocale($lang);
+    return view('localization');
+});
+
+
+// listing the users from database 
+Route::get('userlist', [UserListController::class, 'show']);
