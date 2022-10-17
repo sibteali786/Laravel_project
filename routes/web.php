@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddMember;
+use App\Http\Controllers\ListController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\UserController;
@@ -69,3 +70,6 @@ Route::get('/localization/{lang}', function ($lang) {
 
 // listing the users from database 
 Route::get('userlist', [UserListController::class, 'show']);
+
+// pagination example
+Route::get('list', [ListController::class, 'show']);
